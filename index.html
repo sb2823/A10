@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <h2>Cookie Demo</h2>
+    <input type="text" id="usernameInput" placeholder="Enter your name" />
+    <button onclick="setCookie()">Set Cookie</button>
+    <button onclick="deleteCookie()">Delete Cookie</button>
+
+    <script>
+      function setCookie() {
+        var username = document.getElementById("usernameInput").value;
+        if (username.trim() === "") {
+          alert("Please enter a valid name.");
+          return;
+        }
+
+        const d = new Date();
+        d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000); // Expires in 7 days
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = "username=" + username + ";" + expires + ";path=/";
+        alert("Hello: " + username);
+      }
+
+      function deleteCookie() {
+        document.cookie =
+          "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        alert("Your cookie deleted");
+      }
+    </script>
+  </body>
+  <footer>
+    <p>&copy; Sadia Barlas - 2024</p>
+  </footer>
+</html>
